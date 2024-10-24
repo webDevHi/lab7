@@ -6,17 +6,28 @@ bool isPathToFreedom(MazeCell* start, const std::string& moves) {
     bool foundWand = false;
     bool foundPotion = false;
 
+    MazeCell* currentCell = start;
+
     while (!foundSpellBook && !foundWand && !foundPotion){
-        
+
     }
-    check if item exist, if it does set to true
-    check if move is legal
+  //  check if item exist, if it does set to true
+   // check if move is legal
 
     (void) start;
     (void) moves;
     return false;
-}
+};
 
-bool isLegal(MazeCell* currCell, const std::string& moves ){
+bool isLegalMove(MazeCell* currCell ){
 
-}
+    if (currCell->north != nullptr) return true;
+
+     if (currCell->west != nullptr) return true;
+
+     if (currCell->east != nullptr) return true;
+
+     if (currCell->south != nullptr) return true;
+
+
+};
