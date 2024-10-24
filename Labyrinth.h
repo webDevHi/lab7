@@ -29,5 +29,4 @@ struct MazeCell {
  * and you can't move in directions that don't exist in the maze.
  */
 bool isPathToFreedom(MazeCell* start, const std::string& moves);
-
-bool isLegalMove(MazeCell* currCell);
+void findItem(MazeCell* currCell);
