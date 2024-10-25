@@ -4,56 +4,49 @@
 
 bool isPathToFreedom(MazeCell* start, const std::string& moves) {
     
-    bool* pFoundSpellBook = new bool(false);  // Create pointer to bool
-    bool* pFoundWand = new bool(false);
-    bool* pFoundPotion = new bool(false);
+    bool foundSpellbook = false;
+    bool foundPotion = false;
+    bool foundWand = false;
 
     MazeCell* currentCell = start;
-        //moveToValidPos(currentCell);
-
-        // if (currentCell->whatsHere == Item::SPELLBOOK && !everyItemFound){
-        //     foundSpellBook = true;
-        // } else if (currentCell->whatsHere == Item::POTION && !everyItemFound){
-        //     foundWand = true;
-        // } else if (currentCell->whatsHere == Item::WAND && !everyItemFound){
-        //     foundPotion = true;
-        // } else {
-        //     isPathToFreedom(currentCell, moves);
-        // }
 
         for (int i = 0; i < moves.length()-1; i++){
-            bool everyItemFound = pFoundSpellBook && pFoundWand && pFoundPotion;
+            MazeCell* nextCell = nullptr;
 
-            if (!everyItemFound){
-            if (moves[i] == 'N' && currentCell->north != nullptr){
-                std::cout << "north works" << std::endl;
-            }else if (moves[i] == 'W' && currentCell->west != nullptr){
-                std::cout << "west works" << std::endl;
-            }else if (moves[i] == 'E' && currentCell->east != nullptr){
-                std::cout << "east works" << std::endl;
-            }else if (moves[i] == 'S' && currentCell->south != nullptr){
-                std::cout << "south works" << std::endl;
-            }else {
+             switch (moves[i]) {
+            case 'N':
+                nextCell = currentCell->north;
+                break;
+            case 'S':
+                nextCell = currentCell->south;
+                break;
+            case 'E':
+                nextCell = currentCell->east;
+                break;
+            case 'W':
+                nextCell = currentCell->west;
+                break;
+            default:
                 return false;
-            }
-            }
+        }
+        
+        if (nextCell == nullptr) {
+            return false;
+        }
+        
+        currentCell = nextCell;
+        
+        if (currentCell->whatsHere == Item::SPELLBOOK) foundSpellbook = true;
+        if (currentCell->whatsHere == Item::POTION) foundPotion = true;
+        if (currentCell->whatsHere == Item::WAND) foundWand = true;
+    }
+    
+    return foundSpellbook && foundPotion && foundWand;
 
         }
-    delete pFoundSpellBook;
-    delete pFoundWand;
-    delete pFoundPotion;
-    return true;
 };
 
 
- void findItem(MazeCell* currCell, bool* pFoundSpellBook, bool* pFoundWand, bool* pFoundPotion){
 
-    if (currCell->whatsHere == Item::SPELLBOOK ){
-        pFoundSpellBook = true;
-    } else if (currCell->whatsHere == Item::POTION){
-        pFoundWand = true;
-    } else if (currCell->whatsHere == Item::WAND){
-        pFoundPotion = true;
-    };
 
 };
