@@ -1,14 +1,14 @@
 #include "Labyrinth.h"
 #include <iostream>
-bool foundSpellBook = false;
-bool foundWand = false;
-bool foundPotion = false;
+
 
 bool isPathToFreedom(MazeCell* start, const std::string& moves) {
     
+    bool* pFoundSpellBook = new bool(false);  // Create pointer to bool
+    bool* pFoundWand = new bool(false);
+    bool* pFoundPotion = new bool(false);
 
     MazeCell* currentCell = start;
-    bool everyItemFound = foundSpellBook && foundWand && foundPotion;
         //moveToValidPos(currentCell);
 
         // if (currentCell->whatsHere == Item::SPELLBOOK && !everyItemFound){
@@ -22,6 +22,7 @@ bool isPathToFreedom(MazeCell* start, const std::string& moves) {
         // }
 
         for (int i = 0; i < moves.length()-1; i++){
+            bool everyItemFound = pFoundSpellBook && pFoundWand && pFoundPotion;
 
             if (!everyItemFound){
             if (moves[i] == 'N' && currentCell->north != nullptr){
@@ -38,22 +39,21 @@ bool isPathToFreedom(MazeCell* start, const std::string& moves) {
             }
 
         }
+    delete pFoundSpellBook;
+    delete pFoundWand;
+    delete pFoundPotion;
     return true;
 };
 
 
- void findItem(MazeCell* currCell){
-      
-    bool foundSpellBook = false;
-    bool foundWand = false;
-    bool foundPotion = false;
+ void findItem(MazeCell* currCell, bool* pFoundSpellBook, bool* pFoundWand, bool* pFoundPotion){
 
     if (currCell->whatsHere == Item::SPELLBOOK ){
-        foundSpellBook = true;
+        pFoundSpellBook = true;
     } else if (currCell->whatsHere == Item::POTION){
-        foundWand = true;
+        pFoundWand = true;
     } else if (currCell->whatsHere == Item::WAND){
-        foundPotion = true;
+        pFoundPotion = true;
     };
 
 };
