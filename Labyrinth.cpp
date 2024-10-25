@@ -10,7 +10,7 @@ bool isPathToFreedom(MazeCell* start, const std::string& moves) {
 
     MazeCell* currentCell = start;
 
-        for (int i = 0; i < moves.length()-1; i++){
+        for (int i = 0; i < moves.length(); i++){
             MazeCell* nextCell = nullptr;
 
              switch (moves[i]) {
@@ -44,9 +44,3 @@ bool isPathToFreedom(MazeCell* start, const std::string& moves) {
     return foundSpellbook && foundPotion && foundWand;
 
         }
-};
-
-
-
-
-};

@@ -9,7 +9,7 @@
  * do NOT edit the value of kYourName. Changing kYourName will change which
  * maze you get back, which might invalidate all your hard work!
  */
-const std::string kYourName = "TODO: Replace this string with your name.";
+const std::string kYourName = "MarionChandler";
 
 /* Change these constants to contain the paths out of your mazes. */
 const std::string kPathOutOfNormalMaze = "TODO: Replace this string with your path out of the normal maze.";
